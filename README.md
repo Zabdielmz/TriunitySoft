@@ -14,6 +14,8 @@ Abre `http://localhost:4173/`.
 
 El enlace de contacto usa `triunity.dev@gmail.com`.
 
+La página incluye un explorador interactivo de servicios, preguntas desplegables, navegación móvil accesible y movimiento adaptado a `prefers-reduced-motion`. Los tres ejemplos visuales del explorador son representaciones conceptuales, no proyectos realizados.
+
 ## Recursos
 
 - Imagen de portada: generada para este proyecto. Su descripción de generación está en `ASSETS.md`.

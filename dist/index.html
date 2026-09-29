@@ -10,10 +10,12 @@
     <link rel="preload" href="./assets/archivo-variable.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="./assets/trinity-form.png" as="image" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./experience.css" />
     <script src="./script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div class="page-progress" aria-hidden="true"></div>
 
     <header class="site-header" id="inicio">
       <nav class="nav wrap" aria-label="Navegación principal">
@@ -28,66 +30,75 @@
 
         <div class="nav-links" id="nav-links">
           <a href="#servicios">Servicios</a>
-          <a href="#enfoque">Cómo trabajamos</a>
-          <a href="#nosotros">Nosotros</a>
-          <a class="nav-contact" href="mailto:triunity.dev@gmail.com?subject=Hablemos%20de%20un%20proyecto">Hablemos <span aria-hidden="true">↗</span></a>
+          <a href="#enfoque">Método</a>
+          <a href="#nosotros">Estudio</a>
+          <a class="nav-contact" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a>
         </div>
       </nav>
     </header>
 
     <main id="contenido">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <div class="hero-copy-inner">
-            <h1 id="hero-title">Software que resuelve.<br /><em>Juegos que conectan.</em></h1>
-            <p>Desarrollamos aplicaciones web, software de escritorio y videojuegos. De la primera idea al producto que las personas quieren usar, explorar o jugar.</p>
-            <div class="hero-actions">
-              <a class="button button-light" href="mailto:triunity.dev@gmail.com?subject=Hablemos%20de%20un%20proyecto">Cuéntanos tu idea <span aria-hidden="true">↗</span></a>
-              <a class="text-link" href="#servicios">Explora lo que hacemos <span aria-hidden="true">↓</span></a>
+        <div class="hero-main wrap">
+          <div class="hero-copy">
+            <div class="hero-copy-inner">
+              <h1 id="hero-title">Creamos lo que sigue<span class="hero-title-period">.</span></h1>
+              <p>Aplicaciones web, software de escritorio y videojuegos que convierten una buena idea en algo que vale la pena usar, explorar o jugar.</p>
+              <div class="hero-actions">
+                <a class="button button-light" href="#servicios">Descubre lo que hacemos <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="mailto:triunity.dev@gmail.com?subject=Hablemos%20de%20un%20proyecto">Cuéntanos tu idea <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </div>
-          <div class="hero-caption"><span>Desarrollo digital con intención</span><span>Web / Escritorio / Videojuegos</span></div>
+          <div class="hero-visual" aria-hidden="true">
+            <img src="./assets/trinity-form.png" alt="" width="1586" height="992" fetchpriority="high" />
+            <div class="hero-art-frame"><span>TRIUNITY</span><span>CREATIVE DEVELOPMENT</span></div>
+            <span class="hero-art-coordinate hero-art-coordinate-top">T / 01</span>
+            <span class="hero-art-coordinate hero-art-coordinate-bottom">FORMAS QUE CONVERGEN</span>
+          </div>
         </div>
-        <div class="hero-visual">
-          <img src="./assets/trinity-form.png" alt="Tres formas metálicas que convergen en una sola estructura" width="1586" height="992" fetchpriority="high" />
-          <span class="visual-caption">Distintas miradas. Una dirección.</span>
+        <div class="hero-bottom wrap">
+          <div class="hero-signature" aria-label="Tres perspectivas, una dirección"><span></span><span></span><span></span><p>Tres perspectivas.<br />Una dirección.</p></div>
+          <a href="#manifiesto" class="hero-down">Sigue explorando <span aria-hidden="true">↓</span></a>
         </div>
       </section>
 
-      <section class="services section-pad" id="servicios" aria-labelledby="services-title">
-        <div class="wrap">
-          <div class="section-heading">
-            <h2 id="services-title">Lo que construimos</h2>
-            <p>Elegimos la tecnología según lo que el proyecto necesita, no al revés. Cada solución combina una base sólida con una experiencia cuidada.</p>
-          </div>
-          <div class="service-list">
-            <article class="service-row">
-              <div class="service-symbol" aria-hidden="true"><span class="symbol-browser"></span></div>
-              <div class="service-main">
-                <h3>Aplicaciones web</h3>
-                <p>Plataformas, herramientas y experiencias digitales pensadas para personas reales y objetivos concretos.</p>
-              </div>
-              <span class="service-detail">Productos · Plataformas · Interfaces</span>
-            </article>
-            <article class="service-row">
-              <div class="service-symbol" aria-hidden="true"><span class="symbol-desktop"></span></div>
-              <div class="service-main">
-                <h3>Software de escritorio</h3>
-                <p>Aplicaciones que se sienten naturales en el día a día, con flujos claros y atención a los detalles que ahorran tiempo.</p>
-              </div>
-              <span class="service-detail">Herramientas · Sistemas · Experiencias</span>
-            </article>
-            <article class="service-row">
-              <div class="service-symbol" aria-hidden="true"><span class="symbol-game"></span></div>
-              <div class="service-main">
-                <h3>Videojuegos</h3>
-                <p>Ideas interactivas que encuentran su forma en mecánicas, mundos y momentos que invitan a seguir jugando.</p>
-              </div>
-              <span class="service-detail">Prototipos · Mecánicas · Desarrollo</span>
-            </article>
+      <section class="manifesto section-pad" id="manifiesto" aria-labelledby="manifesto-title">
+        <div class="wrap manifesto-grid">
+          <div class="manifesto-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div>
+            <h2 id="manifesto-title">Entre la lógica y la imaginación está <span>lo extraordinario.</span></h2>
+            <div class="manifesto-bottom"><p>No vemos el software y los videojuegos como mundos separados. En ambos, las decisiones técnicas y creativas tienen que trabajar juntas para que la experiencia se sienta natural.</p><div class="manifesto-orbit" aria-hidden="true"><span></span><span></span><span></span></div></div>
           </div>
         </div>
       </section>
+
+      <section class="capabilities section-pad" id="servicios" aria-labelledby="capabilities-title">
+        <div class="wrap">
+          <div class="capabilities-intro"><h2 id="capabilities-title">Una misma ambición.<br /><span>Distintas formas de crear.</span></h2><p>Explora las disciplinas con las que damos forma a cada idea.</p></div>
+          <div class="capability-workbench" data-active="web">
+            <div class="capability-choices" aria-label="Explorar servicios">
+              <button class="capability-choice is-active" type="button" data-capability="web" aria-pressed="true"><span class="choice-index">A</span><span>Aplicaciones web</span><span class="choice-arrow" aria-hidden="true">↗</span></button>
+              <button class="capability-choice" type="button" data-capability="desktop" aria-pressed="false"><span class="choice-index">B</span><span>Software de escritorio</span><span class="choice-arrow" aria-hidden="true">↗</span></button>
+              <button class="capability-choice" type="button" data-capability="games" aria-pressed="false"><span class="choice-index">C</span><span>Videojuegos</span><span class="choice-arrow" aria-hidden="true">↗</span></button>
+              <p class="choices-aside">Elige una disciplina para explorar cómo pensamos cada experiencia.</p>
+            </div>
+            <div class="capability-stage" aria-live="polite">
+              <div class="stage-visual">
+                <div class="visual-web" data-view="web" aria-hidden="true"><div class="web-window"><div class="window-top"><span class="window-dots"><i></i><i></i><i></i></span><span class="window-address">triunity / concepto</span><span class="window-icon"></span></div><div class="web-body"><div class="web-sidebar"><span class="web-sidebar-logo"></span><i></i><i></i><i></i><i></i></div><div class="web-dashboard"><div class="dashboard-top"><span>Tu próximo producto</span><span class="dashboard-pill">En evolución</span></div><div class="dashboard-title"></div><div class="dashboard-title short"></div><div class="dashboard-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="dashboard-bottom"><span></span><span></span><span></span></div></div></div></div></div>
+                <div class="visual-desktop" data-view="desktop" aria-hidden="true" hidden><div class="desktop-window"><div class="desktop-toolbar"><span class="window-dots"><i></i><i></i><i></i></span><span>Espacio de trabajo</span><span class="toolbar-action">●</span></div><div class="desktop-body"><div class="desktop-rail"><i></i><i></i><i></i><i></i></div><div class="desktop-list"><span>Proyecto</span><i></i><i></i><i></i><i></i><i></i></div><div class="desktop-canvas"><div class="desktop-document"><span></span><i></i><i></i><i></i><div class="document-block"></div></div></div></div></div></div>
+                <div class="visual-games" data-view="games" aria-hidden="true" hidden><div class="game-scene"><div class="game-sky"></div><div class="game-sun"></div><div class="game-mountain back"></div><div class="game-mountain front"></div><div class="game-land"></div><div class="game-hud"><span>EXPLORAR / 01</span><span>◈</span></div><div class="game-reticle"><i></i><i></i></div><div class="game-caption">CADA MUNDO COMIENZA CON UNA IDEA</div></div></div>
+                <span class="stage-label">Representación conceptual</span>
+              </div>
+              <div class="stage-copy" data-copy="web"><div class="stage-heading"><span class="stage-symbol" aria-hidden="true">↗</span><h3>Experiencias web que avanzan contigo.</h3></div><p>Plataformas, herramientas e interfaces que hacen simple lo complejo y acompañan el crecimiento de una idea.</p><span class="stage-tags">Productos digitales · Plataformas · Interfaces</span></div>
+              <div class="stage-copy" data-copy="desktop" hidden><div class="stage-heading"><span class="stage-symbol" aria-hidden="true">⌘</span><h3>Herramientas que se sienten propias.</h3></div><p>Software de escritorio pensado para el trabajo diario: flujos claros, decisiones precisas y atención a los detalles.</p><span class="stage-tags">Herramientas · Sistemas · Experiencias</span></div>
+              <div class="stage-copy" data-copy="games" hidden><div class="stage-heading"><span class="stage-symbol" aria-hidden="true">◇</span><h3>Mundos que invitan a quedarse.</h3></div><p>Prototipos, mecánicas y experiencias interactivas donde cada decisión ayuda a hacer real una visión creativa.</p><span class="stage-tags">Prototipos · Mecánicas · Desarrollo</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pathways section-pad" aria-labelledby="pathways-title"><div class="wrap"><div class="pathways-heading"><h2 id="pathways-title">Sea cual sea el punto de partida, nos interesa lo que puede llegar a ser.</h2><p>Una necesidad concreta o un universo por explorar: damos a cada proyecto la atención que merece.</p></div><div class="pathways-grid"><div class="pathway pathway-product"><div class="pathway-art pathway-art-product" aria-hidden="true"><div class="product-plane p1"></div><div class="product-plane p2"></div><div class="product-plane p3"></div></div><div class="pathway-copy"><h3>Para construir productos</h3><p>Ideas que necesitan claridad, solidez y una experiencia intuitiva desde el primer uso.</p><a href="mailto:triunity.dev@gmail.com?subject=Proyecto%20de%20software">Hablemos de tu producto <span aria-hidden="true">↗</span></a></div></div><div class="pathway pathway-game"><div class="pathway-art pathway-art-game" aria-hidden="true"><div class="game-ring r1"></div><div class="game-ring r2"></div><div class="game-ring r3"></div><div class="game-core"></div></div><div class="pathway-copy"><h3>Para dar vida a un juego</h3><p>Conceptos que buscan convertirse en mecánicas, mundos y momentos memorables.</p><a href="mailto:triunity.dev@gmail.com?subject=Proyecto%20de%20videojuego">Hablemos de tu juego <span aria-hidden="true">↗</span></a></div></div></div></div></section>
 
       <section class="approach section-pad" id="enfoque" aria-labelledby="approach-title">
         <div class="wrap approach-grid">
@@ -113,13 +124,15 @@
         </div>
       </section>
 
+      <section class="questions section-pad" aria-labelledby="questions-title"><div class="wrap questions-grid"><div><h2 id="questions-title">Antes de empezar, conversemos.</h2><p>Cada proyecto tiene su propia forma. Estas son algunas buenas maneras de iniciar la conversación.</p></div><div class="question-list"><details><summary>¿Puedo escribirles si solo tengo una idea?<span aria-hidden="true">+</span></summary><p>Sí. Cuéntanos qué tienes en mente y qué te gustaría lograr. Una conversación inicial puede ayudar a encontrar el siguiente paso.</p></details><details><summary>¿Pueden colaborar con un equipo existente?<span aria-hidden="true">+</span></summary><p>Escríbenos sobre el proyecto, el equipo y el apoyo que buscas. Así podremos conversar sobre cómo colaborar.</p></details><details><summary>¿Trabajan tanto en software como en videojuegos?<span aria-hidden="true">+</span></summary><p>Sí. Desarrollamos aplicaciones web, software de escritorio y videojuegos. Cada proyecto se aborda según sus objetivos y su contexto.</p></details></div></div></section>
+
       <section class="contact section-pad" id="contacto" aria-labelledby="contact-title">
         <div class="wrap contact-grid">
           <div>
-            <h2 id="contact-title">¿Qué quieres construir?</h2>
-            <p>Una plataforma, una herramienta o un mundo nuevo. Nos encantará conocer tu idea y pensar contigo el siguiente paso.</p>
+            <h2 id="contact-title">Lo siguiente puede empezar con un mensaje<span>.</span></h2>
+            <p>Cuéntanos qué quieres construir. Nos encantará conocer tu idea y pensar contigo el siguiente paso.</p>
           </div>
-          <a class="contact-link" href="mailto:triunity.dev@gmail.com?subject=Hablemos%20de%20un%20proyecto">triunity.dev@gmail.com <span aria-hidden="true">↗</span></a>
+          <div class="contact-action"><a class="contact-link" href="mailto:triunity.dev@gmail.com?subject=Hablemos%20de%20un%20proyecto">Escríbenos <span aria-hidden="true">↗</span></a><span>triunity.dev@gmail.com</span></div>
         </div>
       </section>
     </main>
