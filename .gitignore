@@ -1,2 +1,6 @@
 .impeccable/review/
 *.tar.gz
+.vercel/
+.env
+.env.*
+!.env.example
