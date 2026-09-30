@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs><radialGradient id="g"><stop stop-color="#292947"/><stop offset="1" stop-color="#0a101b"/></radialGradient><linearGradient id="r"><stop stop-color="#a189f0"/><stop offset="1" stop-color="#65b5e4"/></linearGradient><filter id="b"><feGaussianBlur stdDeviation="24"/></filter></defs>
+  <rect width="1200" height="700" fill="url(#g)"/>
+  <g transform="translate(615 350)" fill="none" stroke="url(#r)"><ellipse rx="405" ry="150" stroke-width="2" transform="rotate(-25)" opacity=".85"/><ellipse rx="325" ry="295" stroke-width="1.5" transform="rotate(19)" opacity=".6"/><ellipse rx="225" ry="225" stroke-width="1" opacity=".4"/><circle r="115" stroke-width="1.5" opacity=".85"/></g>
+  <circle cx="615" cy="350" r="95" fill="#977bd8" opacity=".36" filter="url(#b)"/><circle cx="615" cy="350" r="55" fill="#a7adf9"/><circle cx="615" cy="350" r="35" fill="#d5dbff"/>
+  <g fill="#d9dcff"><circle cx="238" cy="463" r="8"/><circle cx="1032" cy="317" r="7"/><circle cx="752" cy="139" r="5"/></g>
+  <path d="M0 606h1200M0 94h1200" stroke="#8e95c5" stroke-opacity=".13"/>
+</svg>

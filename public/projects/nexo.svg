@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs><radialGradient id="g"><stop stop-color="#173e53"/><stop offset="1" stop-color="#08121d"/></radialGradient><filter id="b"><feGaussianBlur stdDeviation="28"/></filter></defs>
+  <rect width="1200" height="700" fill="url(#g)"/>
+  <g fill="none" stroke="#376479" stroke-opacity=".33"><path d="M0 130h1200M0 260h1200M0 390h1200M0 520h1200M0 650h1200M125 0v700M315 0v700M505 0v700M695 0v700M885 0v700M1075 0v700"/></g>
+  <g fill="none" stroke="#7feaff" stroke-width="2" stroke-opacity=".85"><path d="M242 405 560 190 962 393 667 558Z"/><path d="M242 405 667 558M560 190 667 558M962 393 242 405"/></g>
+  <g fill="#71e6ff" filter="url(#b)" opacity=".65"><circle cx="242" cy="405" r="30"/><circle cx="560" cy="190" r="29"/><circle cx="962" cy="393" r="29"/></g>
+  <g fill="#bbf5ff"><circle cx="242" cy="405" r="12"/><circle cx="560" cy="190" r="12"/><circle cx="962" cy="393" r="12"/><circle cx="667" cy="558" r="12"/></g>
+  <circle cx="667" cy="558" r="55" fill="none" stroke="#8bebff" stroke-opacity=".35"/>
+</svg>

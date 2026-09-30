@@ -1,0 +1,21 @@
+{
+  "name": "Triunity",
+  "mode": "dark",
+  "colors": {
+    "background": "#080a10",
+    "surface": "#111722",
+    "surfaceRaised": "#171e2b",
+    "text": "#eef2fa",
+    "muted": "#adb8ca",
+    "software": "#71e6ff",
+    "web": "#ae8bff",
+    "videojuego": "#f784c3"
+  },
+  "typography": {
+    "sans": "Space Grotesk",
+    "display": "IBM Plex Sans",
+    "mono": "JetBrains Mono"
+  },
+  "radii": { "control": "4px", "window": "10px" },
+  "motion": { "easeOut": "cubic-bezier(.23, 1, .32, 1)", "reducedMotion": "static brand image" }
+}
