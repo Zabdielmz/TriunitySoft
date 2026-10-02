@@ -20,13 +20,13 @@ Space Grotesk vuelve al cuerpo, controles y acciones. IBM Plex Sans queda en tí
 
 ## Composición
 
-Hero con una capa atmosférica del banner que cubre toda la sección; el texto de marca se mezcla con ella a la derecha sin bordes visibles. Una reserva oscura protege la propuesta y los botones a la izquierda. En móvil, la marca aparece debajo del contenido sobre el mismo fondo continuo. La página alterna manifiesto/editor, tres servicios, galería de conceptos, proceso en forma de git log, franja de tecnologías y contacto terminal. En el encabezado se muestra solo el wordmark.
+Hero con una capa atmosférica del banner que cubre toda la sección; el texto de marca se mezcla con ella a la derecha sin bordes visibles. Una reserva oscura protege la propuesta y los botones a la izquierda. En móvil, el cian y el violeta de la misma imagen llenan la zona superior, con un barrido de luz discreto; el contenido queda sobre un fondo oscuro continuo. La página alterna manifiesto/editor, tres servicios, portafolio de conceptos en dos carriles horizontales, proceso en forma de git log, franja de tecnologías y contacto terminal. En el encabezado se muestra solo el wordmark.
 
 ## Interacción
 
 - El fondo de marca tiene una deriva suave mediante CSS; con movimiento reducido queda estático.
 - La barra de progreso usa un gradiente monocromático gris claro.
-- Filtros de proyectos, inclinación ligera al hover, páginas de detalle y 404 como stack trace.
+- El portafolio avanza automáticamente solo cuando está visible; se pausa con hover o foco. En móvil se recorre deslizando; con movimiento reducido queda estático. Cada concepto abre su página de detalle.
 - Entradas al scroll solo en servicios y proceso; terminal y marquee quedan estáticos con movimiento reducido.
 - Foco visible, navegación por teclado y menú móvil con Escape.
 

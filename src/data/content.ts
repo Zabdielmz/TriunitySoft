@@ -12,17 +12,17 @@ export const site = {
     secondary: 'Hablemos',
   },
   about: {
-    title: 'El tridente',
+    title: 'Nuestra identidad',
     intro: 'Tres personas. Tres perspectivas. Un mismo compromiso con hacer que las ideas funcionen.',
     manifesto: 'En Triunity combinamos ingeniería, diseño e imaginación. Pensamos en el producto completo: cómo se construye, cómo se usa y cómo se siente.',
   },
   services: {
     title: 'Tres disciplinas. Un equipo.',
-    intro: 'Elegimos la herramienta adecuada para cada problema y construimos con atención al detalle.',
+    intro: 'De una operación que necesita orden a una experiencia que invita a explorar: cada disciplina aporta una forma distinta de convertir una idea en algo útil.',
   },
   projects: {
-    title: 'Ideas en ejecución',
-    intro: 'Estamos preparando este espacio para compartir proyectos reales del equipo.',
+    title: 'Portafolio',
+    intro: 'Una colección de conceptos de muestra en software, web y videojuegos. Explora cada propuesta para conocer la idea detrás de ella.',
   },
   process: {
     title: 'De idea a lanzamiento',

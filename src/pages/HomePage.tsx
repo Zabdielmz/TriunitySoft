@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router-dom'
-import { process, services, site, technologies } from '../data/site'
+import { siGodotengine, siNodedotjs, siPython, siReact, siTypescript, siUnity, siUnrealengine, siVite, siWebgl } from 'simple-icons'
+import { categoryLabels, process, projects, services, site, technologies } from '../data/site'
+import type { Project } from '../data/types'
 import { submitContactMock } from '../lib/contact'
 
 function Hero() {
@@ -18,7 +20,7 @@ function Hero() {
       <span className="hero-light-sweep" aria-hidden="true" />
       <img className="hero-brand-lockup" src="/hero-triunity-v3.png" alt="Triunity Software. Jugamos en serio, creamos con pasión." width="2172" height="724" fetchPriority="high" />
     </div>
-    <a href="#tridente" className="scroll-cue" aria-label="Desplazarse a El tridente"><span />scroll para explorar</a>
+    <a href="#tridente" className="scroll-cue" aria-label="Desplazarse a Nuestra identidad"><span />scroll para explorar</a>
   </section>
 }
 
@@ -47,20 +49,83 @@ function About() {
   </section>
 }
 
+const serviceTechIcons: Record<string, string> = {
+  TypeScript: siTypescript.path,
+  'Node.js': siNodedotjs.path,
+  Python: siPython.path,
+  React: siReact.path,
+  Vite: siVite.path,
+  WebGL: siWebgl.path,
+  Unity: siUnity.path,
+  'Unreal Engine': siUnrealengine.path,
+  Godot: siGodotengine.path,
+}
+
 function Services() {
-  const reduced = useReducedMotion()
-  return <section className="section services-section" id="servicios" aria-labelledby="services-title"><div className="container"><div className="section-intro"><h2 id="services-title">{site.services.title}</h2><p>{site.services.intro}</p></div><div className="services-grid">{services.map((service, index) => <motion.article className={`service service-${service.id}`} key={service.id} initial={reduced ? false : { opacity: 0, transform: 'translateY(28px)' }} whileInView={{ opacity: 1, transform: 'translateY(0px)' }} viewport={{ once: true, amount: .15 }} transition={{ duration: .55, delay: index * .1, ease: [.23, 1, .32, 1] }}><span className="service-number">0{index + 1} / 03</span><div className="service-glyph" aria-hidden="true"><span /><span /><span /></div><h3>{service.title}</h3><p>{service.description}</p><div className="service-tech">{service.technologies.map((tech) => <span key={tech}>{tech}</span>)}</div><code>{service.code}</code></motion.article>)}</div></div></section>
+  return <section className="section services-section" id="servicios" aria-labelledby="services-title">
+    <div className="container">
+      <div className="section-intro services-intro"><h2 id="services-title">{site.services.title}</h2><p>{site.services.intro}</p></div>
+      <div className="services-columns">
+        {services.map((service) => <article className={`service-column service-column-${service.id}`} key={service.id}>
+          <span className="service-column-category">{service.id === 'software' ? 'Software' : service.id === 'web' ? 'Web' : 'Videojuegos'}</span>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+          <div className="service-column-applications">
+            <span>En qué puede ayudar</span>
+            <ul>{service.applications.map((application) => <li key={application}>{application}</li>)}</ul>
+          </div>
+          <div className="service-column-footer">
+            <span className="service-column-tech-label">Tecnologías</span>
+            <ul className="service-technology-list">{service.technologies.map((technology) => <li key={technology}>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={serviceTechIcons[technology]} /></svg>
+              <span>{technology}</span>
+            </li>)}</ul>
+            <a href="#contacto">Hablemos de {service.id === 'software' ? 'software' : service.id === 'web' ? 'web' : 'videojuegos'}<span aria-hidden="true">↗</span></a>
+          </div>
+        </article>)}
+      </div>
+    </div>
+  </section>
+}
+
+const portfolioRows = [projects.slice(0, 3), projects.slice(3)]
+
+function PortfolioTile({ project, duplicate = false }: { project: Project; duplicate?: boolean }) {
+  return <Link className={`portfolio-tile portfolio-tile-${project.category}`} to={`/proyectos/${project.slug}`} tabIndex={duplicate ? -1 : undefined} aria-label={duplicate ? undefined : `Explorar el concepto ${project.title}`}>
+    <img src={project.cover} alt="" loading="lazy" decoding="async" />
+    <span className="portfolio-tile-category">CONCEPTO / {categoryLabels[project.category]}</span>
+    <span className="portfolio-tile-copy"><strong>{project.title}</strong><span>{project.summary}</span></span>
+    <svg className="portfolio-tile-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M7 5h12v12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  </Link>
 }
 
 function Projects() {
-  return <section className="section projects-section" id="proyectos" aria-labelledby="projects-title">
-    <div className="container">
-      <div className="projects-header"><div><h2 id="projects-title">{site.projects.title}</h2><p>{site.projects.intro}</p></div></div>
-      <div className="projects-pending">
-        <span className="projects-pending-label">// ESTADO DEL PORTAFOLIO</span>
-        <h3>En proceso<span className="period">.</span></h3>
-        <p>Pronto mostraremos aquí lo que estamos creando.</p>
-      </div>
+  const sectionRef = useRef<HTMLElement>(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    let intersecting = false
+    const update = () => setInView(intersecting && !document.hidden)
+    const observer = new IntersectionObserver(([entry]) => { intersecting = entry?.isIntersecting ?? false; update() }, { threshold: .08 })
+    observer.observe(section)
+    document.addEventListener('visibilitychange', update)
+    return () => { observer.disconnect(); document.removeEventListener('visibilitychange', update) }
+  }, [])
+
+  return <section className="section projects-section" id="proyectos" aria-labelledby="projects-title" ref={sectionRef}>
+    <div className="container projects-header"><h2 id="projects-title">{site.projects.title}</h2><p>{site.projects.intro}</p></div>
+    <div className="portfolio-marquee" role="region" aria-label="Galería de conceptos del portafolio" data-active={inView}>
+      {portfolioRows.map((row, rowIndex) => <div className={`portfolio-row portfolio-row-${rowIndex + 1}`} key={rowIndex}>
+        <div className="portfolio-track">
+          <div className="portfolio-set">{row.map((project) => <PortfolioTile project={project} key={project.slug} />)}</div>
+          <div className="portfolio-set" aria-hidden="true">{row.map((project) => <PortfolioTile project={project} duplicate key={project.slug} />)}</div>
+        </div>
+      </div>)}
+    </div>
+    <div className="container portfolio-footer">
+      <p>Conceptos de muestra. No representan encargos ni productos publicados.</p>
     </div>
   </section>
 }
