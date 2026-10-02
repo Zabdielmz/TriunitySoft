@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { SiteFooter } from './components/SiteFooter'
 import { SiteHeader } from './components/SiteHeader'
 import { HomePage } from './pages/HomePage'
+import { GamePage } from './pages/GamePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ProjectPage } from './pages/ProjectPage'
 
@@ -45,6 +46,7 @@ export default function App() {
     <SiteHeader />
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/jugar" element={<GamePage />} />
       <Route path="/proyectos/:slug" element={<ProjectPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

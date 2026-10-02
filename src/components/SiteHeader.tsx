@@ -6,7 +6,6 @@ const links = [
   { to: '/#inicio', label: '<Inicio />' },
   { to: '/#servicios', label: '/servicios' },
   { to: '/#proyectos', label: './proyectos' },
-  { to: '/#equipo', label: '<Equipo />' },
 ]
 
 export function SiteHeader() {

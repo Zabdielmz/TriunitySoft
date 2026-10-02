@@ -1,35 +1,15 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
-import { founders, process, services, site, technologies } from '../data/site'
+import { Link } from 'react-router-dom'
+import { process, services, site, technologies } from '../data/site'
 import { submitContactMock } from '../lib/contact'
 
-function useDecodedText(value: string) {
-  const reduced = useReducedMotion()
-  const [display, setDisplay] = useState(value)
-  useEffect(() => {
-    if (reduced) return
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/{}'
-    let frame = 0
-    let handle = 0
-    const tick = () => {
-      frame += 1
-      const settled = Math.floor(frame / 3)
-      setDisplay(value.split('').map((character, index) => character === ' ' || character === '.' ? character : index < settled ? character : alphabet[(index * 13 + frame * 7) % alphabet.length]).join(''))
-      if (settled < value.length) handle = window.requestAnimationFrame(tick)
-    }
-    handle = window.requestAnimationFrame(tick)
-    return () => window.cancelAnimationFrame(handle)
-  }, [value, reduced])
-  return display
-}
-
 function Hero() {
-  const headline = useDecodedText(site.hero.headline)
   return <section className="hero" id="inicio" aria-labelledby="hero-title">
     <div className="container hero-content">
       <p className="hero-comment">{site.hero.comment}</p>
-      <h1 id="hero-title" aria-label={site.hero.headline}><span aria-hidden="true">{headline}</span></h1>
+      <h1 id="hero-title">{site.hero.headline}</h1>
       <p className="hero-subtitle">{site.hero.subtitle}</p>
       <div className="hero-actions"><a className="button button-primary" href="#proyectos">{site.hero.primary}<span aria-hidden="true">↗</span></a><a className="button button-outline" href="#contacto">{site.hero.secondary}</a></div>
     </div>
@@ -44,7 +24,7 @@ function Hero() {
 
 function CodeWindow() {
   return <div className="code-window" aria-label="Ejemplo de código de Triunity">
-    <div className="code-window-top"><div className="window-dots"><i /><i /><i /></div><span>triunity.ts</span><span className="code-tab-close">×</span></div>
+    <div className="code-window-top"><div className="window-dots"><i /><i /><i /></div><Link className="code-easter-egg" to="/jugar" aria-label="Abrir el minijuego secreto de Triunity" title="Hay algo más en este archivo">triunity.ts<span aria-hidden="true">↗</span></Link><span className="code-tab-close">×</span></div>
     <div className="code-body">
       <div><span className="line-number">01</span><code><span className="syntax-purple">type</span> Pilar = <span className="syntax-cyan">'software'</span> | <span className="syntax-cyan">'web'</span> | <span className="syntax-cyan">'juego'</span></code></div>
       <div><span className="line-number">02</span><code><span className="syntax-purple">type</span> Estudio = {'{'} fundadores: number; pilares: Pilar[]; objetivo: string {'}'}</code></div>
@@ -63,13 +43,6 @@ function About() {
     <div className="container about-layout">
       <div className="about-copy"><h2 id="about-title">{site.about.title}<span className="period">.</span></h2><p className="lead">{site.about.intro}</p><p>{site.about.manifesto}</p><div className="about-statement"><span>01</span><span>02</span><span>03</span><strong>Una sola dirección.</strong></div></div>
       <CodeWindow />
-    </div>
-    <div className="container founders-wrap" id="equipo">
-      <div className="founders-heading"><h3>Las personas detrás del código</h3><p>Conoce al equipo que da vida a Triunity.</p></div>
-      <div className="founders-grid">{founders.map((founder) => <article className="founder" key={founder.id}>
-        <div className="founder-photo"><img src={founder.photo} alt={`Avatar de ${founder.name}`} loading="lazy" decoding="async" /></div>
-        <div className="founder-copy"><span className="founder-index">// {founder.id}</span><h4>{founder.name}</h4></div>
-      </article>)}</div>
     </div>
   </section>
 }

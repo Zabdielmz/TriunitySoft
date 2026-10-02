@@ -1,0 +1,86 @@
+.game-page {
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding-block: clamp(7rem, 11vw, 10rem) clamp(5rem, 8vw, 8rem);
+  background: radial-gradient(ellipse 45% 48% at 77% 42%, rgba(75, 66, 139, .13), transparent 85%), #080a10;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 8rem);
+}
+
+.game-intro .back-link { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.game-intro h1 { max-width: 11ch; margin-bottom: 1.6rem; font-size: clamp(3.2rem, 5.9vw, 6rem); line-height: 1.01; letter-spacing: -.035em; text-wrap: balance; }
+.game-intro > p { max-width: 42ch; color: var(--muted); font-size: 1.12rem; }
+.game-intro .game-instructions { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; margin-top: 2.5rem; color: #d4e2f0; font-size: .92rem; }
+.game-key-group { display: inline-flex; align-items: center; gap: .15rem; white-space: nowrap; }
+.game-instructions kbd { display: inline-grid; place-items: center; min-width: 1.7rem; min-height: 1.7rem; margin-inline: .15rem; border: 1px solid #53657d; border-radius: 3px; background: #172131; font: .73rem var(--font-mono); }
+
+.game-console { min-width: 0; border: 1px solid #3a4b61; background: #0d141f; box-shadow: 0 28px 70px rgba(0, 0, 0, .22); }
+.game-console-top { min-height: 43px; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-inline: 1.35rem; border-bottom: 1px solid #2f4155; background: #182434; color: #cedbed; font: .67rem var(--font-mono); }
+.game-console-top span:last-child { color: #9ee3ca; white-space: nowrap; }
+.game-console-body { padding: clamp(1.3rem, 3vw, 2.5rem); }
+.game-round { display: flex; justify-content: space-between; align-items: center; gap: 1rem; color: var(--cyan); font: .73rem var(--font-mono); }
+.game-round-bars { display: flex; gap: .35rem; }
+.game-round-bars i { display: block; width: clamp(.65rem, 1.5vw, 1.15rem); height: 3px; background: #3b485a; transition: background .2s ease; }
+.game-round-bars i.is-lit { background: var(--cyan); }
+.game-message { display: flex; flex-direction: column; justify-content: end; min-height: 142px; padding-block: 2.2rem 1.5rem; }
+.game-message h2 { margin-bottom: .45rem; font-size: clamp(1.55rem, 2.3vw, 2.2rem); line-height: 1.12; letter-spacing: -.025em; }
+.game-message p { min-height: 1.5em; margin: 0; color: var(--muted); font-size: .95rem; }
+.game-console[data-phase='won'] .game-message h2 { color: #a9f1d0; }
+.game-console[data-phase='lost'] .game-message h2 { color: #ffacc5; }
+
+.game-pads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; }
+.game-pad { --signal-color: var(--cyan); --signal-rgb: 113 230 255; min-width: 0; min-height: 150px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; border: 1px solid #35465a; border-radius: 5px; background: #111c2a; color: #e6eef9; transition: transform .18s var(--ease-out), border-color .18s ease, background .18s ease, box-shadow .18s ease; }
+.game-pad-1 { --signal-color: var(--violet); --signal-rgb: 174 139 255; }
+.game-pad-2 { --signal-color: var(--magenta); --signal-rgb: 247 132 195; }
+.game-pad:disabled { cursor: default; }
+.game-pad.is-active { border-color: var(--signal-color); background: rgb(var(--signal-rgb) / .14); box-shadow: 0 9px 28px rgb(var(--signal-rgb) / .16), inset 0 0 0 1px rgb(var(--signal-rgb) / .18); }
+.game-pad-core { position: relative; width: 3.25rem; height: 3.25rem; border: 1px solid rgb(var(--signal-rgb) / .65); border-radius: 50%; background: radial-gradient(circle at 34% 28%, rgb(var(--signal-rgb) / .85), rgb(var(--signal-rgb) / .25) 36%, #111c2a 78%); box-shadow: 0 9px 20px rgb(var(--signal-rgb) / .16); opacity: .72; transition: transform .18s var(--ease-out), opacity .18s ease; }
+.game-pad-core::after { content: ''; position: absolute; inset: -.4rem; border: 1px solid rgb(var(--signal-rgb) / .2); border-radius: 50%; }
+.game-pad.is-active .game-pad-core { transform: scale(1.13); opacity: 1; }
+.game-pad-key { color: #a9bfd6; font: .78rem var(--font-mono); }
+@media (hover: hover) and (pointer: fine) { .game-pad:not(:disabled):hover { transform: translateY(-3px); border-color: var(--signal-color); } }
+
+.game-progress { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.5rem; padding-top: 1.3rem; border-top: 1px solid #2c394b; color: #aebed2; font: .67rem var(--font-mono); }
+.game-progress > div { display: flex; gap: .38rem; }
+.game-progress i { display: block; width: .48rem; height: .48rem; border: 1px solid #638096; border-radius: 50%; }
+.game-progress i.is-done { border-color: var(--cyan); background: var(--cyan); }
+.game-controls { min-height: 3.4rem; display: flex; align-items: center; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.5rem; }
+.game-controls .button { min-height: 3.1rem; padding: .7rem 1.1rem; }
+.game-text-button { padding: .4rem 0; border: 0; border-bottom: 1px solid #6b8196; background: transparent; color: #c4d8eb; font: .74rem var(--font-mono); transition: color .18s ease, border-color .18s ease; }
+.game-text-button:hover { color: #fff; border-color: var(--cyan); }
+.game-wait { color: var(--cyan); font: .75rem var(--font-mono); }
+
+@media (max-width: 900px) {
+  .game-page { align-items: start; padding-block: 6.5rem 5rem; }
+  .game-layout { grid-template-columns: 1fr; gap: 2.5rem; max-width: 650px; }
+  .game-intro .back-link { margin-bottom: 2.3rem; }
+  .game-intro h1 { max-width: 14ch; font-size: clamp(2.9rem, 8vw, 4.6rem); }
+  .game-intro > p { font-size: 1rem; }
+  .game-intro .game-instructions { margin-top: 1.3rem; }
+}
+
+@media (max-width: 480px) {
+  .game-page { padding-block: 5.8rem 4rem; }
+  .game-layout { gap: 1.7rem; }
+  .game-intro h1 { margin-bottom: 1rem; font-size: clamp(2.5rem, 11vw, 3.1rem); }
+  .game-console-top { min-height: 40px; padding-inline: .8rem; font-size: .53rem; }
+  .game-console-body { padding: 1rem; }
+  .game-message { min-height: 115px; padding-block: 1.5rem 1rem; }
+  .game-message h2 { font-size: 1.45rem; }
+  .game-message p { font-size: .84rem; }
+  .game-pads { gap: .45rem; }
+  .game-pad { min-height: 117px; gap: .45rem; }
+  .game-pad-core { width: 2.3rem; height: 2.3rem; }
+  .game-pad-key { font-size: .7rem; }
+  .game-progress { font-size: .58rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-pad, .game-pad-core, .game-round-bars i { transition: none; }
+}
