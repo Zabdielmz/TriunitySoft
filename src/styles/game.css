@@ -78,7 +78,10 @@
   .game-pad { min-height: 117px; gap: .45rem; }
   .game-pad-core { width: 2.3rem; height: 2.3rem; }
   .game-pad-key { font-size: .7rem; }
-  .game-progress { font-size: .58rem; }
+  .game-round { flex-wrap: wrap; gap: .55rem; font-size: .67rem; }
+  .game-round-bars { gap: .25rem; }
+  .game-round-bars i { width: .5rem; }
+  .game-progress { flex-wrap: wrap; gap: .55rem; font-size: .58rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

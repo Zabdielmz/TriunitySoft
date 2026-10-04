@@ -20,7 +20,7 @@ const signals = [
   { name: 'tres', key: '3' },
 ] as const
 
-const totalRounds = 6
+const totalRounds = 10
 const firstRoundLength = 2
 
 const phaseTitles: Record<Phase, string> = {
@@ -38,7 +38,7 @@ const initialGame: GameState = {
   sequence: [],
   inputIndex: 0,
   active: null,
-  message: 'Seis rondas. Una sola conexión.',
+  message: 'Diez rondas. Una sola conexión.',
 }
 
 function newSequence(): Signal[] {
@@ -61,8 +61,8 @@ export function GamePage() {
     const timers: number[] = []
     const pattern = game.sequence.slice(0, roundLength)
     const firstCue = 650
-    const cueInterval = Math.max(650, 900 - game.round * 50)
-    const activeDuration = Math.round(cueInterval * .65)
+    const cueInterval = Math.max(560, 1000 - game.round * 50)
+    const activeDuration = Math.round(cueInterval * .64)
 
     pattern.forEach((signal, index) => {
       timers.push(window.setTimeout(() => {
@@ -154,28 +154,35 @@ export function GamePage() {
     message: 'Observa las señales otra vez.',
   }))
 
-  const nextRound = () => setGame((current) => ({
-    ...current,
-    phase: 'showing',
-    round: current.round + 1,
-    inputIndex: 0,
-    active: null,
-    message: 'La secuencia crece. Observa con atención.',
-  }))
+  const nextRound = () => setGame((current) => {
+    const round = current.round + 1
+    return {
+      ...current,
+      phase: 'showing',
+      round,
+      inputIndex: 0,
+      active: null,
+      message: round >= 7
+        ? 'Etapa final: más señales y menos tiempo entre ellas.'
+        : round >= 3
+          ? 'La secuencia crece y el ritmo acelera. Observa con atención.'
+          : 'La secuencia crece. Observa con atención.',
+    }
+  })
 
   return <main className="game-page" id="main">
     <div className="container game-layout">
       <div className="game-intro">
         <Link className="back-link" to="/#tridente">← Volver a Triunity</Link>
         <h1>Sincroniza las tres señales<span className="period">.</span></h1>
-        <p>Observa el patrón de luz y repítelo en el mismo orden. Supera seis rondas para activar la conexión.</p>
+        <p>Observa el patrón de luz y repítelo en el mismo orden. Supera diez rondas: la secuencia crece y las señales se aceleran.</p>
         <p className="game-instructions"><span>Toca las señales o usa las teclas</span><span className="game-key-group"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></span></p>
       </div>
 
       <section className="game-console" aria-label="Minijuego Protocolo 03" data-phase={game.phase}>
         <div className="game-console-top"><span>TRIUNITY / PROTOCOLO 03</span><span>● EN LÍNEA</span></div>
         <div className="game-console-body">
-          <div className="game-round"><span>RONDA {game.phase === 'ready' ? '—' : `0${game.round + 1}`} / 0{totalRounds}</span><div className="game-round-bars" aria-hidden="true">{Array.from({ length: totalRounds }, (_, step) => <i key={step} className={game.phase !== 'ready' && step <= game.round ? 'is-lit' : ''} />)}</div></div>
+          <div className="game-round"><span>RONDA {game.phase === 'ready' ? '—' : String(game.round + 1).padStart(2, '0')} / {String(totalRounds).padStart(2, '0')}</span><div className="game-round-bars" aria-hidden="true">{Array.from({ length: totalRounds }, (_, step) => <i key={step} className={game.phase !== 'ready' && step <= game.round ? 'is-lit' : ''} />)}</div></div>
 
           <div className="game-message" role="status" aria-live="polite" aria-atomic="true">
             <h2>{phaseTitles[game.phase]}</h2>
