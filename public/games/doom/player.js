@@ -1,6 +1,9 @@
 /* Isolated from the site's CSS and React lifecycle. All game assets are local. */
 (() => {
   const channel = 'triunity-doom'
+  // Vercel cleanUrls redirects index.html to /games/doom (without a slash).
+  // Resolve assets from an explicit directory, never from the document URL.
+  const assetBase = new URL('/games/doom/', window.location.origin)
   const allowedKeys = new Set([256, 257, 262, 263, 264, 265, 341, 32, 340])
   const heldKeys = new Set()
   const host = document.getElementById('dos')
@@ -78,9 +81,9 @@
   try {
     if (typeof window.Dos !== 'function') throw new Error('Emulator unavailable')
     player = window.Dos(host, {
-      url: new URL('./doom-shareware.jsdos?v=1', window.location.href).href,
+      url: new URL('doom-shareware.jsdos?v=1', assetBase).href,
       opfsRoot: 'triunity-doom-shareware-v1',
-      pathPrefix: new URL('./vendor/', window.location.href).href,
+      pathPrefix: new URL('vendor/', assetBase).href,
       backend: 'dosbox',
       backendLocked: true,
       autoStart: true,

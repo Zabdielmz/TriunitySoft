@@ -3,8 +3,14 @@
   "framework": null,
   "outputDirectory": "build",
   "cleanUrls": true,
-  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index" }],
+  "rewrites": [{ "source": "/((?!api/|games/).*)", "destination": "/index" }],
   "headers": [
+    {
+      "source": "/games/doom/doom-shareware.jsdos",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
     {
       "source": "/panel-:token",
       "headers": [

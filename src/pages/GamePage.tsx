@@ -148,7 +148,7 @@ export function GamePage() {
             key={attempt}
             ref={frameRef}
             className="doom-frame"
-            src={`/games/doom/index.html?muted=${bootMuted ? '1' : '0'}`}
+            src={`/games/doom/index.html?v=2&muted=${bootMuted ? '1' : '0'}`}
             title="Doom clásico, episodio 1"
             allow="autoplay; fullscreen"
             onError={() => { window.clearTimeout(startupTimer.current); setPhase('error') }}
@@ -158,7 +158,7 @@ export function GamePage() {
               {phase === 'loading' ? <><span className="doom-loader" aria-hidden="true" /><h2>Abriendo las puertas…</h2><p>Preparando el juego. La primera carga puede tardar unos segundos.</p></> : <>
                 <div className="doom-game-title" aria-hidden="true">DOOM</div>
                 <h2>{phase === 'error' ? 'No pudimos arrancar Doom' : phase === 'stopped' ? '¿Una partida más?' : 'Knee-Deep in the Dead'}</h2>
-                <p>{phase === 'error' ? 'Hubo un problema al cargar el juego. Comprueba tu conexión y vuelve a intentarlo.' : phase === 'stopped' ? 'El primer episodio sigue esperando. Puedes empezar de nuevo.' : 'Un pasillo. Una escopeta. Y una muy buena razón para quedarte un rato.'}</p>
+                <p>{phase === 'error' ? 'No se pudieron cargar los archivos del juego. Actualiza la página y vuelve a intentarlo.' : phase === 'stopped' ? 'El primer episodio sigue esperando. Puedes empezar de nuevo.' : 'Un pasillo. Una escopeta. Y una muy buena razón para quedarte un rato.'}</p>
                 <button className="doom-start" type="button" onClick={start}><GameIcon name="play" />{phase === 'error' ? 'Volver a intentar' : phase === 'stopped' ? 'Iniciar otra partida' : 'Iniciar Doom'}</button>
                 <span className="doom-start-note">Sin instalaciones. Juega con teclado o controles táctiles.</span>
               </>}

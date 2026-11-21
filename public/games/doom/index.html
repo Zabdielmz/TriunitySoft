@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>Doom shareware — Triunity</title>
-    <link rel="stylesheet" href="./vendor/js-dos.css" />
+    <link rel="stylesheet" href="/games/doom/vendor/js-dos.css" />
+    <link rel="preload" href="/games/doom/vendor/emulators.js" as="script" />
+    <link rel="preload" href="/games/doom/vendor/wdosbox.wasm" as="fetch" type="application/wasm" crossorigin />
+    <link rel="preload" href="/games/doom/vendor/wlibzip.wasm" as="fetch" type="application/wasm" crossorigin />
     <style>
       html, body, #dos { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #080a10; color-scheme: dark; }
       #dos { outline: none; }
       canvas { image-rendering: pixelated; }
     </style>
-    <script src="./vendor/js-dos.js" defer></script>
-    <script src="./player.js" defer></script>
+    <script src="/games/doom/vendor/js-dos.js" defer></script>
+    <script src="/games/doom/player.js?v=2" defer></script>
   </head>
   <body><div id="dos" tabindex="0" aria-label="Doom clásico. Pulsa Escape para abrir el menú del juego."></div></body>
 </html>

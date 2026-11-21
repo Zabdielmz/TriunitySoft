@@ -22,4 +22,12 @@ Los archivos de `vendor/` proceden del paquete oficial npm **js-dos 8.5.4**, que
 
 DOSBox usa `aspect=false`; el reproductor ajusta por separado la presentación a 4:3. Esto evita líneas duplicadas en el HUD. El paquete usa una URL y una raíz de caché versionadas (`v=1`, `triunity-doom-shareware-v1`): deben incrementarse si cambia la configuración o el contenido del bundle para no reutilizar una copia antigua de OPFS.
 
+## Vercel y carga inicial
+
+Con `cleanUrls: true`, Vercel redirige `index.html` a `/games/doom`, sin barra final. Tanto el HTML como `player.js` usan la base absoluta `/games/doom/` para que el navegador no busque los recursos en `/games/`. La versión `v=2` del documento y del script evita reutilizar las URLs de arranque anteriores.
+
+El HTML precarga el cargador y los módulos WebAssembly en paralelo, únicamente después de iniciar Doom. El bundle shareware tiene caché HTTP de larga duración en Vercel; su query `v=1` debe incrementarse si se modifica. La regla SPA excluye `/games/` para que un recurso faltante devuelva 404 y no la página principal.
+
+Verificación de rutas, firma de los binarios y configuración: `node --test tests/doom-assets.test.mjs`.
+
 DOOM es una marca de id Software. Esta integración no implica afiliación con id Software.
