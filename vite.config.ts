@@ -4,5 +4,14 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  build: { outDir: 'build', emptyOutDir: true },
+  build: {
+    outDir: 'build',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        panel: 'panel-b84cbb776bb32b95.html',
+      },
+    },
+  },
 })

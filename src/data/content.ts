@@ -30,14 +30,19 @@ export const site = {
   },
   contact: {
     title: 'Iniciemos algo juntos.',
-    intro: 'Cuéntanos qué quieres construir. Este formulario es una demostración: prepara la información, pero aún no envía mensajes reales.',
-    success: 'Mensaje preparado. Abre el borrador de correo y envíalo desde tu aplicación de email.',
-    error: 'No pudimos preparar el mensaje. Intenta de nuevo o escríbenos directamente.',
+    intro: 'Cuéntanos qué quieres construir. Respondemos por correo apenas revisemos tu mensaje.',
+    success: 'Gracias por enviar tu formulario. Nos pondremos en contacto contigo pronto.',
+    error: 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente.',
   },
   social: [
     { label: 'GitHub', url: '' },
     { label: 'LinkedIn', url: '' },
     { label: 'Instagram', url: '' },
+  ],
+  socialLinks: [
+    { label: 'Instagram', url: 'https://www.instagram.com/triunity.software/' },
+    { label: 'X', url: 'https://x.com/TriunityDev' },
+    { label: 'GitHub', url: 'https://github.com/triunitydev' },
   ],
 } as const
 

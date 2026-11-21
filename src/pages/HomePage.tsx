@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { siGodotengine, siNodedotjs, siPython, siReact, siTypescript, siUnity, siUnrealengine, siVite, siWebgl } from 'simple-icons'
 import { categoryLabels, process, projects, services, site, technologies } from '../data/site'
 import type { Project } from '../data/types'
-import { submitContactMock } from '../lib/contact'
+import { ContactError, submitContact } from '../lib/contact'
 
 function Hero() {
   return <section className="hero" id="inicio" aria-labelledby="hero-title">
@@ -139,7 +139,7 @@ function Tech() {
   return <section className="tech-section" aria-label="Tecnologías que utilizamos"><div className="container tech-heading"><h2>Herramientas para cada universo.</h2><p>El stack cambia. La intención de hacerlo bien, no.</p></div><div className="tech-marquee"><div className="tech-track">{[...technologies, ...technologies].map((tech, index) => <span aria-hidden={index >= technologies.length} key={`${tech}-${index}`}>{tech}<i aria-hidden="true" /></span>)}</div></div></section>
 }
 
-const terminalCommands = ['npx create-triunity-project', 'git commit -m "launch"', 'npm run build']
+const terminalCommands = ['pnpm dlx create-triunity-project', 'git commit -m "launch"', 'pnpm build']
 
 function Terminal() {
   const reduced = useReducedMotion()
@@ -154,32 +154,70 @@ function Terminal() {
 
 function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
-  const [draftHref, setDraftHref] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const startedAt = useRef(Date.now())
   const onEdit = () => {
-    if (draftHref) setDraftHref('')
-    if (status === 'success' || status === 'error') setStatus('idle')
+    if (status === 'success' || status === 'error') {
+      setStatus('idle')
+      setErrorMessage('')
+    }
   }
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (status === 'sending') return
-    const values = new FormData(event.currentTarget)
+    const form = event.currentTarget
+    const values = new FormData(form)
     const contact = {
       name: String(values.get('name') || ''),
       email: String(values.get('email') || ''),
       category: String(values.get('category') || ''),
       message: String(values.get('message') || ''),
+      website: String(values.get('website') || ''),
     }
-    setDraftHref('')
     setStatus('sending')
+    setErrorMessage('')
     try {
-      await submitContactMock(contact)
-      const subject = `Proyecto ${contact.category} — ${contact.name}`
-      const body = `Nombre: ${contact.name}\nCorreo: ${contact.email}\nTipo de proyecto: ${contact.category}\n\n${contact.message}`
-      setDraftHref(`mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`)
+      await submitContact(contact, startedAt.current)
+      form.reset()
+      startedAt.current = Date.now()
       setStatus('success')
-    } catch { setStatus('error') }
+    } catch (err) {
+      setStatus('error')
+      setErrorMessage(err instanceof ContactError ? err.message : site.contact.error)
+    }
   }
-  return <section className="section contact-section" id="contacto" aria-labelledby="contact-title"><div className="container contact-layout"><div className="contact-copy"><h2 id="contact-title">{site.contact.title}</h2><p>{site.contact.intro}</p><a className="email-link" href={`mailto:${site.email}`}>{site.email}<span aria-hidden="true">↗</span></a><div className="social-list" aria-label="Redes sociales pendientes">{site.social.map((social) => <span key={social.label} title="Enlace por añadir">{social.label} <small>próximamente</small></span>)}</div><Terminal /></div><form className="contact-form" onSubmit={onSubmit} onChange={onEdit}><div className="form-caption"><span>nuevo_mensaje.ts</span><span>● ● ●</span></div><div className="form-fields"><label>Nombre<input name="name" type="text" autoComplete="name" minLength={2} required placeholder="Tu nombre" /></label><label>Email<input name="email" type="email" autoComplete="email" required placeholder="tu@empresa.com" /></label><label>Tipo de proyecto<select name="category" required defaultValue=""><option value="" disabled>Selecciona una opción</option><option value="software">Software</option><option value="web">Web</option><option value="videojuego">Videojuego</option><option value="otro">Otro</option></select></label><label>Mensaje<textarea name="message" rows={5} minLength={10} required placeholder="Cuéntanos tu idea..." /></label><button className="button button-primary" type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Procesando...' : 'Preparar mensaje'}<span aria-hidden="true">↗</span></button><p className={`form-message form-message-${status}`} role="status" aria-live="polite">{status === 'success' ? site.contact.success : status === 'error' ? site.contact.error : status === 'sending' ? '> preparando solicitud...' : '// servicio de envío pendiente de conectar'}</p>{draftHref && <a className="draft-link" href={draftHref}>Abrir correo con borrador <span aria-hidden="true">↗</span></a>}</div></form></div></section>
+  return (
+    <section className="section contact-section" id="contacto" aria-labelledby="contact-title">
+      <div className="container contact-layout">
+        <div className="contact-copy">
+          <h2 id="contact-title">{site.contact.title}</h2>
+          <p>{site.contact.intro}</p>
+          <a className="email-link" href={`mailto:${site.email}`}>{site.email}<span aria-hidden="true">↗</span></a>
+          <div className="social-list" aria-label="Redes sociales pendientes">{site.social.map((social) => <span key={social.label} title="Enlace por añadir">{social.label} <small>próximamente</small></span>)}</div>
+          <Terminal />
+        </div>
+        <form className="contact-form" onSubmit={onSubmit} onChange={onEdit}>
+          <div className="form-caption"><span>nuevo_mensaje.ts</span><span>● ● ●</span></div>
+          <div className="form-fields">
+            <label>Nombre<input name="name" type="text" autoComplete="name" minLength={2} required placeholder="Tu nombre" /></label>
+            <label>Email<input name="email" type="email" autoComplete="email" required placeholder="tu@empresa.com" /></label>
+            <label>Tipo de proyecto<select name="category" required defaultValue=""><option value="" disabled>Selecciona una opción</option><option value="software">Software</option><option value="web">Web</option><option value="videojuego">Videojuego</option><option value="otro">Otro</option></select></label>
+            <label>Mensaje<textarea name="message" rows={5} minLength={10} required placeholder="Cuéntanos tu idea..." /></label>
+            <label className="honeypot" aria-hidden="true"><span>Website</span><input name="website" type="text" tabIndex={-1} autoComplete="off" /></label>
+            <button className="button button-primary" type="submit" disabled={status === 'sending'}>
+              {status === 'sending' ? <><span className="button-spinner" aria-hidden="true" /> Enviando…</> : <>Enviar mensaje<span aria-hidden="true">↗</span></>}
+            </button>
+            <p className={`form-message form-message-${status}`} role="status" aria-live="polite">
+              {status === 'success' ? site.contact.success
+                : status === 'error' ? errorMessage || site.contact.error
+                : status === 'sending' ? '> enviando solicitud...'
+                : '// respuesta en menos de 48 h'}
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+  )
 }
 
 export function HomePage() {

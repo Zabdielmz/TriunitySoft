@@ -4,19 +4,19 @@ Sitio corporativo de Triunity, creado con React, TypeScript, Vite, Tailwind CSS 
 
 ## Requisitos y comandos
 
-Necesitas Node.js 20.19+ o 22.12+ y npm.
+Necesitas Node.js 20.19+ o 22.12+ y pnpm.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Abre la URL local que muestre Vite. Para verificar la entrega:
 
 ```bash
-npm run lint
-npm run build
-npm run preview
+pnpm lint
+pnpm build
+pnpm preview
 ```
 
 Vite genera el sitio en `build/`. El antiguo sitio está conservado en `dist/`; sus notas anteriores están en `README.legacy.md`.
@@ -47,10 +47,10 @@ Mientras tanto, el sitio ofrece un enlace directo a `triunity.dev@gmail.com`.
 
 ## Despliegue
 
-`npm run build` produce archivos estáticos en `build/`.
+`pnpm build` produce archivos estáticos en `build/`.
 
 - **Vercel:** importa el repositorio. `vercel.json` configura `build/` y la reescritura para las rutas de React.
-- **Netlify:** comando `npm run build`, directorio `build`. Añade la regla `/* /index.html 200` para las rutas.
+- **Netlify:** comando `pnpm build`, directorio `build`. Añade la regla `/* /index.html 200` para las rutas.
 - **GitHub Pages:** configura `base` en `vite.config.ts` con el nombre del repositorio y usa `HashRouter` o una redirección 404 para las rutas internas.
 
 Actualiza `public/sitemap.xml`, `public/robots.txt` y la URL de `og:image` en `index.html` con el dominio real antes de publicar. `example.com` es un marcador explícito en los archivos de rastreo; no se proporcionó un dominio público. El sitemap incluye las seis rutas de proyecto actuales. La imagen Open Graph es el banner de marca proporcionado por la empresa.
