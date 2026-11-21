@@ -19,3 +19,9 @@ La escultura de portada está dibujada en Canvas. Las interfaces de Nexo y Orbit
 ## Tipografía
 
 `dist/assets/archivo-variable.ttf` proviene del repositorio oficial [Google Fonts / Archivo](https://github.com/google/fonts/tree/main/ofl/archivo). La licencia acompaña al archivo en `dist/assets/archivo-OFL.txt`.
+
+## Doom del easter egg
+
+`public/games/doom/doom-shareware.jsdos` contiene la distribución shareware 1.9 original, episodio 1. El WAD se verificó mediante SHA-1 `5b2e249b9c5133ec987b3ea77596381dc0d6bc1d`; no incluye `DOOM.WAD` de la edición registrada. Se conservaron los ejecutables y documentos originales. Los únicos archivos añadidos son la configuración del emulador y el aviso de licencia.
+
+`public/games/doom/vendor/` contiene js-dos 8.5.4 y los componentes de DOSBox de emulators 8.5.3. La procedencia, las licencias y los enlaces al código fuente se documentan en `public/games/doom/README.md`. Todo se sirve desde el propio sitio y se solicita solo al iniciar el juego.

@@ -43,3 +43,9 @@ Los formularios usan etiquetas visibles, controles de al menos 44 px, estados de
 Instagram, X y GitHub se muestran con sus enlaces reales en contacto, en lugar de los espacios de «próximamente». El footer conserva el correo y la navegación.
 
 Los avisos de correo usan tablas y estilos en línea, tipografía del sistema, cabecera de marca oscura y contenido claro con adaptación al modo oscuro en clientes compatibles. Separan el remitente, los datos de la solicitud y el mensaje; incluyen respuesta por correo y una alternativa de texto plano. Las fechas se muestran en la zona horaria de Ciudad de México.
+
+## Easter egg de Doom
+
+El enlace oculto del archivo `triunity.ts` conserva la ruta `/jugar`. Allí, una consola con el primer episodio shareware de Doom 1.9 sustituye a Protocolo 03. Mantiene la base oscura y los controles cian de Triunity; el juego conserva su imagen original a proporción 4:3 y píxeles nítidos. El emulador y el juego se alojan localmente y solo se cargan al pulsar «Iniciar Doom».
+
+La barra de la consola permite pausar, silenciar y ampliar la partida. En móvil añade controles táctiles de dirección, disparo, uso y menú. Tab permite salir del teclado del juego hacia los controles del sitio. Cambiar de pestaña pausa la emulación; salir de la ruta destruye el reproductor. Créditos y licencias se consultan desde un enlace al pie de la consola.
