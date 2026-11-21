@@ -1,5 +1,5 @@
 import { createCipheriv, createDecipheriv, createHmac, randomBytes } from 'node:crypto'
-import { config } from './config'
+import { config } from './config.js'
 
 export function encryptField(plain: string): string {
   const iv = randomBytes(12)

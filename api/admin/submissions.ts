@@ -1,1 +1,1 @@
-export { default } from '../../backend/src/admin/submissions'
+export { default } from '../../backend/src/admin/submissions.js'

@@ -1,17 +1,17 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { compare } from 'bcryptjs'
 import { and, eq, gt, lt } from 'drizzle-orm'
-import { createSessionToken, sessionCookie } from '../lib/auth'
-import { hashIp } from '../lib/crypto'
-import { getDb, schema } from '../lib/db'
+import { createSessionToken, sessionCookie } from '../lib/auth.js'
+import { hashIp } from '../lib/crypto.js'
+import { getDb, schema } from '../lib/db.js'
 import {
   clientIp,
   json,
   methodNotAllowed,
   rejectIfBadOrigin,
   rejectIfTooLarge,
-} from '../lib/http'
-import { loginSchema } from '../lib/validation'
+} from '../lib/http.js'
+import { loginSchema } from '../lib/validation.js'
 
 const { adminUsers, loginAttempts } = schema
 

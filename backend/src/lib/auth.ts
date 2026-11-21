@@ -1,6 +1,6 @@
 import { SignJWT, jwtVerify } from 'jose'
 import type { VercelRequest } from '@vercel/node'
-import { config } from './config'
+import { config } from './config.js'
 
 const COOKIE_NAME = 'triunity_session'
 const COOKIE_MAX_AGE = 43200

@@ -1,16 +1,16 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { and, count, eq, gt } from 'drizzle-orm'
-import { hashEmail, hashIp, encryptField } from './lib/crypto'
-import { getDb, schema } from './lib/db'
-import { sendSubmissionNotification } from './lib/email'
+import { hashEmail, hashIp, encryptField } from './lib/crypto.js'
+import { getDb, schema } from './lib/db.js'
+import { sendSubmissionNotification } from './lib/email.js'
 import {
   clientIp,
   json,
   methodNotAllowed,
   rejectIfBadOrigin,
   rejectIfTooLarge,
-} from './lib/http'
-import { contactSchema } from './lib/validation'
+} from './lib/http.js'
+import { contactSchema } from './lib/validation.js'
 
 const { contactSubmissions } = schema
 

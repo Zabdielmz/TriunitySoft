@@ -1,1 +1,1 @@
-export { default } from '../backend/src/contact'
+export { default } from '../backend/src/contact.js'

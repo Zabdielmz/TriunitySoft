@@ -1,14 +1,14 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { count, eq } from 'drizzle-orm'
-import { readSession } from '../lib/auth'
-import { getDb, schema } from '../lib/db'
+import { readSession } from '../lib/auth.js'
+import { getDb, schema } from '../lib/db.js'
 import {
   json,
   methodNotAllowed,
   rejectIfBadOrigin,
   rejectIfTooLarge,
-} from '../lib/http'
-import { notifyEmailSchema, removeNotifySchema } from '../lib/validation'
+} from '../lib/http.js'
+import { notifyEmailSchema, removeNotifySchema } from '../lib/validation.js'
 
 const { notifyEmails } = schema
 

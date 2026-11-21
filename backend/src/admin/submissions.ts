@@ -1,15 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { desc, eq } from 'drizzle-orm'
-import { readSession } from '../lib/auth'
-import { decryptField } from '../lib/crypto'
-import { getDb, schema } from '../lib/db'
+import { readSession } from '../lib/auth.js'
+import { decryptField } from '../lib/crypto.js'
+import { getDb, schema } from '../lib/db.js'
 import {
   json,
   methodNotAllowed,
   rejectIfBadOrigin,
   rejectIfTooLarge,
-} from '../lib/http'
-import { markReadSchema } from '../lib/validation'
+} from '../lib/http.js'
+import { markReadSchema } from '../lib/validation.js'
 
 const { contactSubmissions } = schema
 

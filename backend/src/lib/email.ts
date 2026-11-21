@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
-import { config } from './config'
-import { getDb, schema } from './db'
+import { config } from './config.js'
+import { getDb, schema } from './db.js'
 
 let client: Resend | null = null
 

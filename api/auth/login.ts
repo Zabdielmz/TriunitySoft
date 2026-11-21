@@ -1,1 +1,1 @@
-export { default } from '../../backend/src/auth/login'
+export { default } from '../../backend/src/auth/login.js'
