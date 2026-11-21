@@ -33,3 +33,13 @@ Hero con una capa atmosférica del banner que cubre toda la sección; el texto d
 ## Pendientes de marca
 
 Completar retratos, nombres/cargos del equipo, proyectos reales, enlaces sociales y dominio del sitemap. El favicon sigue siendo provisional hasta recibir el recurso oficial.
+
+## Administración y avisos de contacto
+
+El panel conserva el fondo oscuro y el acento cian, con Space Grotesk en controles, IBM Plex Sans en títulos y monoespaciada solo para datos puntuales. La navegación lateral da acceso a la bandeja y a los destinatarios; en móvil se convierte en navegación superior. La bandeja usa búsqueda, filtros de lectura y proyecto, una lista con vista previa y un área de lectura. En pantallas pequeñas, el mensaje ocupa el lugar del listado y permite volver con el foco en la solicitud seleccionada. Marcar como leída no equivale a responder.
+
+Los formularios usan etiquetas visibles, controles de al menos 44 px, estados de envío y errores explícitos. Las solicitudes y los destinatarios tienen estados de carga y vacío. Los colores por categoría mantienen la relación software/cian, web/violeta y videojuegos/magenta.
+
+Instagram, X y GitHub se muestran con sus enlaces reales en contacto, en lugar de los espacios de «próximamente». El footer conserva el correo y la navegación.
+
+Los avisos de correo usan tablas y estilos en línea, tipografía del sistema, cabecera de marca oscura y contenido claro con adaptación al modo oscuro en clientes compatibles. Separan el remitente, los datos de la solicitud y el mensaje; incluyen respuesta por correo y una alternativa de texto plano. Las fechas se muestran en la zona horaria de Ciudad de México.

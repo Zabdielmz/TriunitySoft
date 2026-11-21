@@ -19,7 +19,7 @@ export function PanelApp() {
   }, [])
 
   if (session === 'loading') {
-    return <div className="panel-boot" role="status">Cargando panel…</div>
+    return <div className="panel-boot" role="status"><span className="panel-spinner" aria-hidden="true" />Preparando tu espacio de trabajo…</div>
   }
   if (!session) {
     return <PanelLogin onLogin={setSession} />

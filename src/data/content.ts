@@ -34,11 +34,6 @@ export const site = {
     success: 'Gracias por enviar tu formulario. Nos pondremos en contacto contigo pronto.',
     error: 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente.',
   },
-  social: [
-    { label: 'GitHub', url: '' },
-    { label: 'LinkedIn', url: '' },
-    { label: 'Instagram', url: '' },
-  ],
   socialLinks: [
     { label: 'Instagram', url: 'https://www.instagram.com/triunity.software/' },
     { label: 'X', url: 'https://x.com/TriunityDev' },

@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router-dom'
-import { siGodotengine, siNodedotjs, siPython, siReact, siTypescript, siUnity, siUnrealengine, siVite, siWebgl } from 'simple-icons'
+import { siGithub, siInstagram, siX, siGodotengine, siNodedotjs, siPython, siReact, siTypescript, siUnity, siUnrealengine, siVite, siWebgl } from 'simple-icons'
 import { categoryLabels, process, projects, services, site, technologies } from '../data/site'
 import type { Project } from '../data/types'
 import { ContactError, submitContact } from '../lib/contact'
+
+const socialIcons: Record<string, string> = { Instagram: siInstagram.path, X: siX.path, GitHub: siGithub.path }
 
 function Hero() {
   return <section className="hero" id="inicio" aria-labelledby="hero-title">
@@ -193,7 +195,7 @@ function Contact() {
           <h2 id="contact-title">{site.contact.title}</h2>
           <p>{site.contact.intro}</p>
           <a className="email-link" href={`mailto:${site.email}`}>{site.email}<span aria-hidden="true">↗</span></a>
-          <div className="social-list" aria-label="Redes sociales pendientes">{site.social.map((social) => <span key={social.label} title="Enlace por añadir">{social.label} <small>próximamente</small></span>)}</div>
+          <div className="social-list" aria-label="Redes sociales de Triunity">{site.socialLinks.map((social) => <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`${social.label} de Triunity (abre en una pestaña nueva)`}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={socialIcons[social.label]} /></svg>{social.label}</a>)}</div>
           <Terminal />
         </div>
         <form className="contact-form" onSubmit={onSubmit} onChange={onEdit}>
