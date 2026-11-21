@@ -49,3 +49,9 @@ Los avisos de correo usan tablas y estilos en línea, tipografía del sistema, c
 El enlace oculto del archivo `triunity.ts` conserva la ruta `/jugar`. Allí, una consola con el primer episodio shareware de Doom 1.9 sustituye a Protocolo 03. Mantiene la base oscura y los controles cian de Triunity; el juego conserva su imagen original a proporción 4:3 y píxeles nítidos. El emulador y el juego se alojan localmente y solo se cargan al pulsar «Iniciar Doom».
 
 La barra de la consola permite pausar, silenciar y ampliar la partida. En móvil añade controles táctiles de dirección, disparo, uso y menú. Tab permite salir del teclado del juego hacia los controles del sitio. Cambiar de pestaña pausa la emulación; salir de la ruta destruye el reproductor. Créditos y licencias se consultan desde un enlace al pie de la consola.
+
+## Fichas de proyecto
+
+Las seis fichas usan una columna de lectura junto a un visor contenido, dentro de un ancho máximo de 1120 px. El nombre tiene una escala moderada; el resumen, la disciplina y la idea se leen en el primer bloque. La imagen respeta su proporción y dispone de miniaturas para las vistas adicionales, sin repetir portadas en una galería extensa. Se puede abrir cada original en una pestaña nueva.
+
+El stack propuesto y los enlaces se agrupan debajo, con un aviso explícito de concepto demostrativo. Al final quedan el contacto y la navegación al siguiente proyecto. En móvil el contenido pasa a una columna; los colores por disciplina y el resto de la identidad se mantienen. Los estilos de esta superficie están en `src/styles/project.css`.
